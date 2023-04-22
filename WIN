@@ -1,0 +1,121 @@
+.AUTODEPEND
+#		*Translator Definitions*
+ASSEMBLER = tasm
+TLIB = tlib
+TLINK = tlink
+LIBPATH = D:\BC\LIB
+INCLUDEPATH = D:\BC\INCLUDE
+
+.PRECIOUS : window.lib
+
+.asm.obj :
+       &$(ASSEMBLER) /uT300 -q -zn -ml -w2 -x $(?:.obj=.asm)
+
+LIB_dependencies =  \
+allocerr.obj \
+chgattr.obj  \
+makeattr.obj \
+wnact.obj    \
+wnbcol.obj   \
+wnbchg.obj   \
+wnborder.obj \
+wnclose.obj  \
+wnclosea.obj \
+wncls.obj    \
+wncore.obj   \
+wncurson.obj \
+wndeact.obj  \
+wnedit.obj   \
+wngetatt.obj \
+wngetcur.obj \
+wnhide.obj   \
+wnhideal.obj \
+wnint24.obj  \
+wnkill.obj   \
+wnkillal.obj \
+wnmake.obj   \
+wnmove.obj   \
+wnopen.obj   \
+wnprint.obj  \
+wnprintx.obj \
+wnpxya.obj   \
+wnsactco.obj \
+wnscroll.obj \
+wnsetatt.obj \
+wnsetcur.obj \
+wnshadow.obj \
+wnshoff.obj  \
+wntitle.obj
+
+#       *Explicit Rules*
+window.lib: $(LIB_dependencies)
+       &$(TLIB) /C /E window.lib -+$?
+
+allocerr.obj :  allocerr.asm
+
+chgattr.obj  :  chgattr.asm
+
+makeattr.obj :  makeattr.asm
+
+wnact.obj    :  wnact.asm
+
+wnbcol.obj   :  wnbcol.asm
+
+wnbchg.obj   :  wnbchg.asm
+
+wnborder.obj :  wnborder.asm
+
+wnclose.obj  :  wnclose.asm
+
+wnclosea.obj :  wnclosea.asm
+
+wncls.obj    :  wncls.asm
+
+wncore.obj   :  wncore.asm
+
+wncurson.obj :  wncurson.asm
+
+wndeact.obj  :  wndeact.asm
+
+wnedit.obj   :  wnedit.asm
+
+wngetatt.obj :  wngetatt.asm
+
+wngetcur.obj :  wngetcur.asm
+
+wnhide.obj   :  wnhide.asm
+
+wnhideal.obj :  wnhideal.asm
+
+wnint24.obj  :  wnint24.asm
+
+wnkill.obj   :  wnkill.asm
+
+wnkillal.obj :  wnkillal.asm
+
+wnmake.obj   :  wnmake.asm
+
+wnmove.obj   :  wnmove.asm
+
+wnopen.obj   :  wnopen.asm
+
+wnprint.obj  :  wnprint.asm
+
+wnprintx.obj :  wnprintx.asm
+
+wnpxya.obj   :  wnpxya.asm
+
+wnsactco.obj :  wnsactco.asm
+
+wnscroll.obj :  wnscroll.asm
+
+wnsetatt.obj :  wnsetatt.asm
+
+wnsetcur.obj :  wnsetcur.asm
+
+wnshadow.obj :  wnshadow.asm
+
+wnshoff.obj  :  wnshoff.asm
+
+wntitle.obj  :  wntitle.asm
+

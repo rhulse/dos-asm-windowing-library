@@ -1,0 +1,51 @@
+.AUTODEPEND
+#		*Translator Definitions*
+ASSEMBLER = tasm
+TLIB = tlib
+TLINK = tlink
+LIBPATH = D:\BC\LIB
+INCLUDEPATH = D:\BC\INCLUDE
+
+.PRECIOUS : mylib.lib
+
+.asm.obj :
+       &$(ASSEMBLER) /uT300 -zn -ml -w2 -x $(?:.obj=.asm)
+
+LIB_dependencies =  \
+beep.obj       \
+bioprint.obj   \
+doscd.obj      \
+dosff.obj      \
+dosfn.obj      \
+dvinit.obj     \
+dvpause.obj    \
+dvsr.obj       \
+getdrive.obj   \
+getkey.obj     \
+gettime.obj    \
+setdrive.obj   \
+spause.obj     \
+tpause.obj     \
+waittick.obj
+
+#       *Explicit Rules*
+mylib.lib: $(LIB_dependencies)
+       &$(TLIB) /C /E mylib.lib -+$?
+
+beep.obj       : beep.asm
+bioprint.obj   : bioprint.asm
+doscd.obj      : doscd.asm
+dosff.obj      : dosff.asm
+dosfn.obj      : dosfn.asm
+dvinit.obj     : dvinit.asm
+dvpause.obj    : dvpause.asm
+dvsr.obj       : dvsr.asm
+getdrive.obj   : getdrive.asm
+getkey.obj     : getkey.asm
+gettime.obj    : gettime.asm
+setdrive.obj   : setdrive.asm
+spause.obj     : spause.asm
+tpause.obj     : tpause.asm
+waittick.obj   : waittick.asm
+
+

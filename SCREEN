@@ -1,0 +1,60 @@
+.AUTODEPEND
+#		*Translator Definitions*
+ASSEMBLER = tasm
+TLIB = tlib
+TLINK = tlink
+LIBPATH = D:\BC\LIB
+INCLUDEPATH = D:\BC\INCLUDE
+#curpos.asm
+#cursor.asm
+
+.PRECIOUS : screen.lib
+
+.asm.obj :
+       &$(ASSEMBLER) -q /uT300 -zn -ml -w2 -x $(?:.obj=.asm)
+
+LIB_dependencies =  \
+bginfo.obj   \
+bscpos.obj   \
+bscsize.obj  \
+curthin.obj  \
+curhide.obj  \
+curfat.obj   \
+cursr.obj    \
+drawbox.obj  \
+modlog.obj   \
+vsback.obj   \
+vsborder.obj \
+vconfig.obj  \
+vsdisp.obj
+
+#       *Explicit Rules*
+screen.lib: $(LIB_dependencies)
+       &$(TLIB) /C /E screen.lib -+$?
+
+bginfo.obj   :  bginfo.asm
+
+bscpos.obj   :  bscpos.asm
+
+bscsize.obj  :  bscsize.asm
+
+curthin.obj  :  curthin.asm
+
+curhide.obj  :  curhide.asm
+
+curfat.obj   :  curfat.asm
+
+cursr.obj    :  cursr.asm
+
+drawbox.obj  :  drawbox.asm
+
+modlog.obj   :  modlog.asm
+
+vsback.obj   :  vsback.asm
+
+vsborder.obj :  vsborder.asm
+
+vconfig.obj  :  vconfig.asm
+
+vsdisp.obj   :  vsdisp.asm
+
